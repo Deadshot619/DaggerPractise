@@ -11,18 +11,11 @@ import dagger.android.support.DaggerAppCompatActivity;
 
 public class AuthActivity extends DaggerAppCompatActivity {
 
-    @Inject
-    String test;
-
-    TextView textView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
-        textView = findViewById(R.id.tv_firstText);
-        textView.setText(test);
 
     }
 }

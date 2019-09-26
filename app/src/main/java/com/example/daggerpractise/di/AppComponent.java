@@ -24,7 +24,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
                     it only goes inside Application level component
                  */
                 AndroidSupportInjectionModule.class,
-                ActivityBuildersModule.class
+                ActivityBuildersModule.class,
+                AppModule.class
         }
 )
 public interface AppComponent extends AndroidInjector<BaseApplication> {

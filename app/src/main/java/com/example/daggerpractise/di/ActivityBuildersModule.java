@@ -7,7 +7,8 @@ import dagger.Provides;
 import dagger.android.ContributesAndroidInjector;
 
 /**
- * [@Module] Place for dependencies to live, that can be later added into Components.
+ * - [@Module] Place for dependencies to live, that can be later added into Components.
+ * - This class will only contain Activity Declarations
  */
 @Module
 public abstract class ActivityBuildersModule {
@@ -18,11 +19,4 @@ public abstract class ActivityBuildersModule {
     @ContributesAndroidInjector
     abstract AuthActivity contributeAuthActivity();
 
-    /**
-     * Provides a dependency to the client
-     */
-    @Provides
-    static String someString(){
-        return "Dagger is Fucking Working!";
-    }
 }

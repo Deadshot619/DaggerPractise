@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.example.daggerpractise.BaseApplication;
 
+import javax.inject.Singleton;
+
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjector;
@@ -12,7 +14,10 @@ import dagger.android.support.AndroidSupportInjectionModule;
 /**
     - We are going to inject BaseApplication in this Component &
     - Base Component will be a client of AppComponent service
+    - (@Singleton) tells dagger that AppComponent owns the '@Singleton' scope.
+        -- When this component dies/destroyed, all of its dependencies will also get destroyed.
 */
+@Singleton
 @Component(
         /*
           When using these convenience classes like AndroidInjector & DaggerApplication,

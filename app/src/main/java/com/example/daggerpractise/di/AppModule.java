@@ -11,6 +11,8 @@ import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.daggerpractise.R;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -28,6 +30,7 @@ public class AppModule {
      *
      *  This function will be called if glide can't load the image or an error occurs
      */
+    @Singleton
     @Provides
     static RequestOptions provideRequestOptions(){
         return RequestOptions
@@ -42,12 +45,14 @@ public class AppModule {
      * @param requestOptions takes an RequestOptions instance that is created in AppModule.
      * @return returns a Glide Instance.
      */
+    @Singleton
     @Provides
     static RequestManager provideGlideInstance(Application application, RequestOptions requestOptions){
         return Glide.with(application)
                 .setDefaultRequestOptions(requestOptions);
     }
 
+    @Singleton
     @Provides
     static Drawable provideAppDrawable(Application application){
         return ContextCompat.getDrawable(application, R.drawable.android);

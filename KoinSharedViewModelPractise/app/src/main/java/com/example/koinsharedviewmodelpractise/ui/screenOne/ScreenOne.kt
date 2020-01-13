@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.koinsharedviewmodelpractise.R
 import com.example.koinsharedviewmodelpractise.databinding.ScreenOneFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,13 +24,15 @@ class ScreenOne : Fragment() {
         binding = ScreenOneFragmentBinding.inflate(inflater)
         binding.lifecycleOwner = this
 
-        return inflater.inflate(R.layout.screen_one_fragment, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
+        binding.btnSaveNext.setOnClickListener {
+            findNavController().navigate(R.id.action_screenOne_to_screenTwoFragment)
+        }
     }
 
 }

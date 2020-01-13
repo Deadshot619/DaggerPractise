@@ -7,5 +7,13 @@
     <fragment
         android:id="@+id/screenOne"
         android:name="com.example.koinsharedviewmodelpractise.ui.screenOne.ScreenOne"
-        android:label="ScreenOne" />
+        android:label="ScreenOne">
+        <action
+            android:id="@+id/action_screenOne_to_screenTwoFragment"
+            app:destination="@id/screenTwoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/screenTwoFragment"
+        android:name="com.example.koinsharedviewmodelpractise.ui.screenTwo.ScreenTwoFragment"
+        android:label="ScreenTwoFragment" />
 </navigation>

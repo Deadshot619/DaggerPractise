@@ -5,24 +5,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.example.koinsharedviewmodelpractise.R
+import com.example.koinsharedviewmodelpractise.databinding.ScreenOneFragmentBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ScreenOne : Fragment() {
 
+    private lateinit var binding: ScreenOneFragmentBinding
 
-    private lateinit var viewModel: ScreenOneViewModel
+    //Lazily Initialize viewModel using Koin
+    private val viewModel: ScreenOneViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = ScreenOneFragmentBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+
         return inflater.inflate(R.layout.screen_one_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(ScreenOneViewModel::class.java)
+
 
     }
 

@@ -33,6 +33,7 @@
                 android:id="@+id/edt__first_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                tools:text="hello"
                 android:text="@={viewModel.firstName}" />
         </com.google.android.material.textfield.TextInputLayout>
 

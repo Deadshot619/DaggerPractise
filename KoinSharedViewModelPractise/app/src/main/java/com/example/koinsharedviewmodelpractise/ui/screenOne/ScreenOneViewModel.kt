@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class ScreenOneViewModel : ViewModel() {
 
     //Variable to store first & last name
-    var firstName = ""
+    var firstName = "hello"
     var lastName = ""
 
     //LiveData variable to store change state of fragment

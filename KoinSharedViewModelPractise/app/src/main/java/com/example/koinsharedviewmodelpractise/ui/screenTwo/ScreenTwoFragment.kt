@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.example.koinsharedviewmodelpractise.databinding.ScreenTwoFragmentBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.example.koinsharedviewmodelpractise.ui.screenOne.ScreenOneViewModel
 
 class ScreenTwoFragment : Fragment() {
 
@@ -14,7 +15,11 @@ class ScreenTwoFragment : Fragment() {
     private lateinit var binding: ScreenTwoFragmentBinding
 
     //Lazily Initialize viewModel using Koin
-    private val viewModel: ScreenTwoViewModel by viewModel()
+    private val viewModel: ScreenOneViewModel by /*viewModel()*/ lazy {
+        activity?.run {
+            ViewModelProviders.of(this).get(ScreenOneViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,13 +29,16 @@ class ScreenTwoFragment : Fragment() {
         binding = ScreenTwoFragmentBinding.inflate(inflater)
 
         //Set lifecycle owner
-        binding.lifecycleOwner = this
+//        binding.lifecycleOwner = this
 
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
+        binding.viewModel = this.viewModel
 
     }
 

@@ -12,6 +12,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ScreenOne : Fragment() {
 
+    //layout binding variable
     private lateinit var binding: ScreenOneFragmentBinding
 
     //Lazily Initialize viewModel using Koin
@@ -21,7 +22,10 @@ class ScreenOne : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //inflate Layout
         binding = ScreenOneFragmentBinding.inflate(inflater)
+
+        //Set lifecycle owner
         binding.lifecycleOwner = this
 
         return binding.root

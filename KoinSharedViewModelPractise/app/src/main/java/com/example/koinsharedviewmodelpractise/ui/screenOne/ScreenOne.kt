@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.koinsharedviewmodelpractise.R
 import com.example.koinsharedviewmodelpractise.databinding.ScreenOneFragmentBinding
@@ -34,9 +35,16 @@ class ScreenOne : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        binding.btnSaveNext.setOnClickListener {
-            findNavController().navigate(R.id.action_screenOne_to_screenTwoFragment)
-        }
+        //Bind xml viewmodel to fragment's viewmodel
+        binding.viewModel = this.viewModel
+
+        //Observe 'gotoNextScreen' variable, if data changes to true, move to next screen
+        viewModel.gotoNextScreen.observe(this, Observer {
+            if (it) {
+                findNavController().navigate(R.id.action_screenOne_to_screenTwoFragment)
+                viewModel.gotoNextScreenComplete()
+            }
+        })
     }
 
 }

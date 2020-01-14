@@ -7,6 +7,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.koinsharedviewmodelpractise.ui.screenOne.ScreenOneViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +32,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt__first_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.firstName}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -46,7 +50,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_last_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.lastName}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -56,6 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="Save &amp; Next"
+            android:onClick="@{() -> viewModel.onClickSaveNextBtn()}"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
